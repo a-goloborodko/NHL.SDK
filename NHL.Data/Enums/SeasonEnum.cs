@@ -1,5 +1,5 @@
 ﻿
-namespace NHL.Data.Model  
+namespace NHL.Data.Enums  
 {  
   public enum SeasonEnum: int
   {
