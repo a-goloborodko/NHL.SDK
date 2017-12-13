@@ -41,17 +41,25 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Enums\GameTypeEnum.cs" />
+    <Compile Include="Model\Conference.cs" />
+    <Compile Include="Model\Division.cs" />
+    <Compile Include="Model\Franchise.cs" />
     <Compile Include="Model\Player.cs" />
-    <Compile Include="Model\SeasonEnum.cs">
+    <Compile Include="Model\PlayerStatistic.cs" />
+    <Compile Include="Enums\SeasonEnum.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>SeasonEnum.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\Position.cs" />
+    <Compile Include="Model\Team.cs" />
+    <Compile Include="Model\TimeZone.cs" />
+    <Compile Include="Model\Venue.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <Content Include="Model\SeasonEnum.tt">
+    <Content Include="Enums\SeasonEnum.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>SeasonEnum.cs</LastGenOutput>
     </Content>
