@@ -1,6 +1,8 @@
-﻿namespace NHL.Data.Model
+﻿using NHL.Data.Interfaces;
+
+namespace NHL.Data.Model
 {
-    public class PlayerStatistic
+    public class PlayerStatistic : INHLModel
     {
         public long PlayerId { get; set; }
         public long SeasonId { get; set; }
