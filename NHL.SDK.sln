@@ -5,6 +5,8 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NHL.Data", "NHL.Data\NHL.Data.csproj", "{8ED17FBB-8535-4C35-AE37-4AF636C0A79D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NHL.Client", "NHL.Client\NHL.Client.csproj", "{71A2668D-53EF-4043-B1D4-3612E23D9FF4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{8ED17FBB-8535-4C35-AE37-4AF636C0A79D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8ED17FBB-8535-4C35-AE37-4AF636C0A79D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8ED17FBB-8535-4C35-AE37-4AF636C0A79D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{71A2668D-53EF-4043-B1D4-3612E23D9FF4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{71A2668D-53EF-4043-B1D4-3612E23D9FF4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{71A2668D-53EF-4043-B1D4-3612E23D9FF4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{71A2668D-53EF-4043-B1D4-3612E23D9FF4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

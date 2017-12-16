@@ -1,8 +1,9 @@
 ﻿using NHL.Data.Enums;
+using NHL.Data.Interfaces;
 
 namespace NHL.Data.Model
 {
-    public class Franchise
+    public class Franchise : INHLModel
     {
         public SeasonEnum FirstSeasonId { get; set; }
         public int FranchiseId { get; set; }
