@@ -1,6 +1,8 @@
-﻿namespace NHL.Data.Model
+﻿using NHL.Data.Interfaces;
+
+namespace NHL.Data.Model
 {
-    public class Player
+    public class Player : INHLModel
     {
         public bool Active { get; set; }
         public bool AlternateCaptain { get; set; }

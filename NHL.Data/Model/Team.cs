@@ -1,6 +1,8 @@
-﻿namespace NHL.Data.Model
+﻿using NHL.Data.Interfaces;
+
+namespace NHL.Data.Model
 {
-    public class Team
+    public class Team : INHLModel
     {
         public string Abbreviation { get; set; }
         public bool Active { get; set; }
