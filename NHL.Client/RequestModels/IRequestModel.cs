@@ -1,6 +1,6 @@
 ﻿namespace NHL.Client.RequestModels
 {
-    internal interface IRequestModel
+    public interface IRequestModel
     {
     }
 }
