@@ -61,7 +61,7 @@ namespace NHL.Client.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to https://statsapi.web.nhl.com/api/v1/divisions/.
+        ///   Looks up a localized string similar to https://statsapi.web.nhl.com/api/v1/conferences/.
         /// </summary>
         internal static string Conferences {
             get {

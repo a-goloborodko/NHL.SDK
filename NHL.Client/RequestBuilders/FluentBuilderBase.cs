@@ -9,8 +9,8 @@ using System.Threading.Tasks;
 
 namespace NHL.Client.RequestBuilders
 {
-    public abstract class FluentBuilderBase<T>
-        where T : INHLModel
+    public abstract class FluentBuilderBase<TModel, TRequest>
+        where TModel : INHLModel
     {
         internal FluentBuilderBase(IRequestModel requestModel)
         {
@@ -19,7 +19,7 @@ namespace NHL.Client.RequestBuilders
 
         protected IRequestModel RequestModel { get; private set; }
 
-        protected FluentBuilderBase<T> SetProperty<TPropertyType>(Expression<Func<T, TPropertyType>> property, TPropertyType value)
+        protected FluentBuilderBase<TModel, TRequest> SetProperty<TPropertyType>(Expression<Func<TRequest, TPropertyType>> property, TPropertyType value)
         {
             PropertyInfo propertyInfo = null;
 
@@ -37,14 +37,14 @@ namespace NHL.Client.RequestBuilders
             return this;
         }
 
-        protected async virtual Task<List<T>>ExecuteAsync()
+        public async virtual Task<List<TModel>>ExecuteAsync()
         {
             string responseContent = await MakeHttpRequestAsync(GenerateRequestUrl());
             return ParseHttpResult(responseContent);
         }
 
         protected abstract string GenerateRequestUrl();
-        protected abstract List<T> ParseHttpResult(string httpResponseContent);
+        protected abstract List<TModel> ParseHttpResult(string httpResponseContent);
 
         protected async Task<string> MakeHttpRequestAsync(string endpointUrl)
         {

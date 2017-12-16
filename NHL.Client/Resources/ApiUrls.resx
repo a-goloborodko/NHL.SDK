@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Conferences" xml:space="preserve">
-    <value>https://statsapi.web.nhl.com/api/v1/divisions/</value>
+    <value>https://statsapi.web.nhl.com/api/v1/conferences/</value>
   </data>
   <data name="Divisions" xml:space="preserve">
     <value>https://statsapi.web.nhl.com/api/v1/divisions/</value>
