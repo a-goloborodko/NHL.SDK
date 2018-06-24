@@ -16,6 +16,7 @@ namespace NHL.Client.RequestBuilders
     {
         protected Dictionary<Type, Type> typeBindings;
         protected Type modelType = typeof(TModel);
+        protected Dictionary<Type, string> switchRequestUrl;
 
         internal GeneralRequestBuilder(IRequestModel requestModel) : base(requestModel)
         {
@@ -25,6 +26,13 @@ namespace NHL.Client.RequestBuilders
              { typeof(Franchise), typeof(FranchiseResponseModel) },
              { typeof(Team), typeof(TeamResponseModel) },
              { typeof(Player), typeof(PeopleResponseModel) }};
+
+            switchRequestUrl = new Dictionary<Type, string> {
+             { typeof(Conference), ApiUrls.Conferences },
+             { typeof(Division), ApiUrls.Divisions },
+             { typeof(Franchise), ApiUrls.Franchises },
+             { typeof(Team), ApiUrls.Teams },
+             { typeof(Player), ApiUrls.People }};
         }
 
         public GeneralRequestBuilder<TModel, TRequest> SetId<TPropertyType>(Expression<Func<TRequest, TPropertyType>> property, TPropertyType value)
@@ -34,15 +42,7 @@ namespace NHL.Client.RequestBuilders
 
         protected override string GenerateRequestUrl()
         {
-            
-            var @switch = new Dictionary<Type, string> {
-             { typeof(Conference), ApiUrls.Conferences },
-             { typeof(Division), ApiUrls.Divisions },
-             { typeof(Franchise), ApiUrls.Franchises },
-             { typeof(Team), ApiUrls.Teams },
-             { typeof(Player), ApiUrls.People }};
-
-            string requestUrl = @switch[modelType];
+            string requestUrl = switchRequestUrl[modelType];
 
             if (string.IsNullOrWhiteSpace(requestUrl))
             {
@@ -82,6 +82,7 @@ namespace NHL.Client.RequestBuilders
 
                 MethodInfo generic = method.MakeGenericMethod(desserializeObjectType);
                 var response = generic.Invoke(null, new[] { httpResponseContent });
+
                 if (modelType == typeof(Conference))
                 {
                     return ((ConferenceResponseModel)response).Conferences as List<TModel>;
