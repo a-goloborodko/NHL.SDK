@@ -14,11 +14,22 @@ namespace NHL.Client.RequestBuilders
     public class GeneralRequestBuilder<TModel, TRequest> : FluentBuilderBase<TModel, TRequest>
         where TModel : INHLModel
     {
+        static private MethodInfo _deserializeMethodInfo;
+
         protected Dictionary<Type, Type> typeBindings;
         protected Type modelType = typeof(TModel);
         protected Dictionary<Type, string> switchRequestUrl;
 
-        internal GeneralRequestBuilder(IRequestModel requestModel) : base(requestModel)
+        static GeneralRequestBuilder()
+        {
+            _deserializeMethodInfo = typeof(Newtonsoft.Json.JsonConvert).GetMethods(BindingFlags.Public | BindingFlags.Static)
+                   .Where(x => x.Name == "DeserializeObject" && x.IsGenericMethod)
+                   .Select(x => new { Method = x, Params = x.GetParameters() })
+                   .FirstOrDefault(x => x.Params.Length == 1).Method;
+        }
+
+        internal GeneralRequestBuilder(IRequestModel requestModel) 
+            : base(requestModel)
         {
             typeBindings = new Dictionary<Type, Type> {
              { typeof(Conference), typeof(ConferenceResponseModel) },
@@ -73,45 +84,32 @@ namespace NHL.Client.RequestBuilders
 
             try
             {
-                var method = typeof(Newtonsoft.Json.JsonConvert).GetMethods(BindingFlags.Public | BindingFlags.Static)
-                    .Where(x => x.Name == "DeserializeObject" && x.IsGenericMethod)
-                    .Select(x => new { Method = x, Params = x.GetParameters() })
-                    .FirstOrDefault(x => x.Params.Length == 1).Method;
-
                 var desserializeObjectType = typeBindings[modelType];
 
-                MethodInfo generic = method.MakeGenericMethod(desserializeObjectType);
+                MethodInfo generic = _deserializeMethodInfo.MakeGenericMethod(desserializeObjectType);
                 var response = generic.Invoke(null, new[] { httpResponseContent });
 
-                if (modelType == typeof(Conference))
+                //TODO: move to automapper
+                switch (response)
                 {
-                    return ((ConferenceResponseModel)response).Conferences as List<TModel>;
-                }
-                else if (modelType == typeof(Division))
-                {
-                    return ((DivisionsResponseModel)response).Divisions as List<TModel>;
-                }
-                else if (modelType == typeof(Team))
-                {
-                    return ((TeamResponseModel)response).Teams as List<TModel>;
-                }
-                else if (modelType == typeof(Player))
-                {
-                    return ((PeopleResponseModel)response).People as List<TModel>;
-                }
-                else if (modelType == typeof(Franchise))
-                {
-                    return ((FranchiseResponseModel)response).Franchises as List<TModel>;
-                }
-                else
-                {
-                    throw new Exception(string.Format("model type {0} not supported.", modelType));
+                    case ConferenceResponseModel conference:
+                        return ((ConferenceResponseModel)response).Conferences as List<TModel>;
+                    case Division division:
+                        return ((DivisionsResponseModel)response).Divisions as List<TModel>;
+                    case Team team:
+                        return ((TeamResponseModel)response).Teams as List<TModel>;
+                    case Player player:
+                        return ((PeopleResponseModel)response).People as List<TModel>;
+                    case Franchise franchise:
+                        return ((FranchiseResponseModel)response).Franchises as List<TModel>;
+                    default:
+                        throw new Exception($"model type {modelType} not supported.");
                 }
             }
             catch (Exception ex)
             {
                 return new List<TModel>();
-                throw;
+                throw; //TODO: ?????
             }
         }
     }
