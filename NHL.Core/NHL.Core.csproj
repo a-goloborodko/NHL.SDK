@@ -1,14 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{8ED17FBB-8535-4C35-AE37-4AF636C0A79D}</ProjectGuid>
+    <ProjectGuid>{FA548584-127C-4071-AEDB-5B994DEF1360}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>NHL.Data</RootNamespace>
-    <AssemblyName>NHL.Data</AssemblyName>
+    <RootNamespace>NHL.Core</RootNamespace>
+    <AssemblyName>NHL.Core</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -40,46 +40,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Attributes\ObjectAnnotationAttribute.cs" />
-    <Compile Include="Enums\GameTypeEnum.cs" />
-    <Compile Include="Interfaces\INHLModel.cs" />
-    <Compile Include="Model\Conference.cs" />
-    <Compile Include="Model\Division.cs" />
-    <Compile Include="Model\Franchise.cs" />
-    <Compile Include="Model\Player.cs" />
-    <Compile Include="Model\PlayerStatistic.cs" />
-    <Compile Include="Enums\SeasonEnum.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>SeasonEnum.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\Position.cs" />
-    <Compile Include="Model\Team.cs" />
-    <Compile Include="Model\TimeZone.cs" />
-    <Compile Include="Model\Venue.cs" />
+    <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Content Include="Enums\SeasonEnum.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>SeasonEnum.cs</LastGenOutput>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\NHL.Core\NHL.Core.csproj">
-      <Project>{fa548584-127c-4071-aedb-5b994def1360}</Project>
-      <Name>NHL.Core</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
 </Project>

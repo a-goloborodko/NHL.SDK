@@ -1,49 +1,37 @@
-﻿using NHL.Data.Interfaces;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using NHL.Client.Exceptions;
+using NHL.Client.RequestModels;
+using NHL.Client.Resources;
+using NHL.Data.Attributes;
+using NHL.Data.Interfaces;
+using NHL.Data.Model;
 using System;
 using System.Collections.Generic;
-using NHL.Client.RequestModels;
 using System.Linq.Expressions;
-using NHL.Data.Model;
-using NHL.Client.Resources;
-using NHL.Client.ResponseModels;
 using System.Reflection;
-using System.Linq;
 
 namespace NHL.Client.RequestBuilders
 {
     public class GeneralRequestBuilder<TModel, TRequest> : FluentBuilderBase<TModel, TRequest>
         where TModel : INHLModel
     {
-        static private MethodInfo _deserializeMethodInfo;
-
-        protected Dictionary<Type, Type> typeBindings;
         protected Type modelType = typeof(TModel);
-        protected Dictionary<Type, string> switchRequestUrl;
+        protected static Dictionary<Type, string> switchRequestUrl;
 
         static GeneralRequestBuilder()
         {
-            _deserializeMethodInfo = typeof(Newtonsoft.Json.JsonConvert).GetMethods(BindingFlags.Public | BindingFlags.Static)
-                   .Where(x => x.Name == "DeserializeObject" && x.IsGenericMethod)
-                   .Select(x => new { Method = x, Params = x.GetParameters() })
-                   .FirstOrDefault(x => x.Params.Length == 1).Method;
-        }
-
-        internal GeneralRequestBuilder(IRequestModel requestModel) 
-            : base(requestModel)
-        {
-            typeBindings = new Dictionary<Type, Type> {
-             { typeof(Conference), typeof(ConferenceResponseModel) },
-             { typeof(Division), typeof(DivisionsResponseModel) },
-             { typeof(Franchise), typeof(FranchiseResponseModel) },
-             { typeof(Team), typeof(TeamResponseModel) },
-             { typeof(Player), typeof(PeopleResponseModel) }};
-
             switchRequestUrl = new Dictionary<Type, string> {
              { typeof(Conference), ApiUrls.Conferences },
              { typeof(Division), ApiUrls.Divisions },
              { typeof(Franchise), ApiUrls.Franchises },
              { typeof(Team), ApiUrls.Teams },
              { typeof(Player), ApiUrls.People }};
+        }
+
+        internal GeneralRequestBuilder(IRequestModel requestModel)
+            : base(requestModel)
+        {
         }
 
         public GeneralRequestBuilder<TModel, TRequest> SetId<TPropertyType>(Expression<Func<TRequest, TPropertyType>> property, TPropertyType value)
@@ -62,6 +50,7 @@ namespace NHL.Client.RequestBuilders
 
             var requestModel = (GeneralRequestModel)RequestModel;
 
+            //TODO: Use Required attribute and check with default() value. Get rid from hardcoded type
             if (modelType == typeof(Player) && requestModel.Id == 0)
             {
                 throw new ArgumentException("request must include a valid person ID");
@@ -84,32 +73,21 @@ namespace NHL.Client.RequestBuilders
 
             try
             {
-                var desserializeObjectType = typeBindings[modelType];
+                var parsedJObject = JObject.Parse(httpResponseContent);
+                var modelJObjectAnnotationAttribute = modelType.GetCustomAttribute<ObjectAnnotationAttribute>();
 
-                MethodInfo generic = _deserializeMethodInfo.MakeGenericMethod(desserializeObjectType);
-                var response = generic.Invoke(null, new[] { httpResponseContent });
-
-                //TODO: move to automapper
-                switch (response)
+                if (modelJObjectAnnotationAttribute == null)
                 {
-                    case ConferenceResponseModel conference:
-                        return ((ConferenceResponseModel)response).Conferences as List<TModel>;
-                    case Division division:
-                        return ((DivisionsResponseModel)response).Divisions as List<TModel>;
-                    case Team team:
-                        return ((TeamResponseModel)response).Teams as List<TModel>;
-                    case Player player:
-                        return ((PeopleResponseModel)response).People as List<TModel>;
-                    case Franchise franchise:
-                        return ((FranchiseResponseModel)response).Franchises as List<TModel>;
-                    default:
-                        throw new Exception($"model type {modelType} not supported.");
+                    throw new NotSupportedException($"{this.GetType().Name} doesn't support {modelType.Name} model");
                 }
+
+                string modelJObjectAnnotation = modelJObjectAnnotationAttribute.JsonObjectName;
+
+                return JsonConvert.DeserializeObject<List<TModel>>(parsedJObject[modelJObjectAnnotation].ToString());
             }
-            catch (Exception ex)
+            catch
             {
-                return new List<TModel>();
-                throw; //TODO: ?????
+                throw new NHLClientInternalException("Internal error on data parsing");
             }
         }
     }

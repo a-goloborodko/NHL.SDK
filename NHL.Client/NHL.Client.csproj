@@ -48,6 +48,7 @@
     <Compile Include="API\ApiResult.cs" />
     <Compile Include="API\HttpClientSingleton.cs" />
     <Compile Include="API\IApiClient.cs" />
+    <Compile Include="Exceptions\NHLClientInternalException.cs" />
     <Compile Include="NHLClient.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RequestBuilders\FluentBuilderBase.cs" />
@@ -60,11 +61,6 @@
       <DependentUpon>ApiUrls.resx</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
-    <Compile Include="ResponseModels\ConferenceResponseModel.cs" />
-    <Compile Include="ResponseModels\DivisionsResponseModel.cs" />
-    <Compile Include="ResponseModels\FranchiseResponseModel.cs" />
-    <Compile Include="ResponseModels\PeopleResponseModel.cs" />
-    <Compile Include="ResponseModels\TeamResponseModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\NHL.Data\NHL.Data.csproj">

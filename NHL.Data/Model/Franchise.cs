@@ -1,8 +1,10 @@
-﻿using NHL.Data.Enums;
+﻿using NHL.Data.Attributes;
+using NHL.Data.Enums;
 using NHL.Data.Interfaces;
 
 namespace NHL.Data.Model
 {
+    [ObjectAnnotation("franchises")]
     public class Franchise : INHLModel
     {
         public SeasonEnum FirstSeasonId { get; set; }

@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2000
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NHL.Data", "NHL.Data\NHL.Data.csproj", "{8ED17FBB-8535-4C35-AE37-4AF636C0A79D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NHL.Client", "NHL.Client\NHL.Client.csproj", "{71A2668D-53EF-4043-B1D4-3612E23D9FF4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NHL.Core", "NHL.Core\NHL.Core.csproj", "{FA548584-127C-4071-AEDB-5B994DEF1360}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,8 +23,15 @@ Global
 		{71A2668D-53EF-4043-B1D4-3612E23D9FF4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{71A2668D-53EF-4043-B1D4-3612E23D9FF4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{71A2668D-53EF-4043-B1D4-3612E23D9FF4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FA548584-127C-4071-AEDB-5B994DEF1360}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA548584-127C-4071-AEDB-5B994DEF1360}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA548584-127C-4071-AEDB-5B994DEF1360}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FA548584-127C-4071-AEDB-5B994DEF1360}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DDEE8B27-4C35-42C3-915A-DF1B2E229631}
 	EndGlobalSection
 EndGlobal

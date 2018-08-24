@@ -1,7 +1,9 @@
-﻿using NHL.Data.Interfaces;
+﻿using NHL.Data.Attributes;
+using NHL.Data.Interfaces;
 
 namespace NHL.Data.Model
 {
+    [ObjectAnnotation("people")]
     public class Player : INHLModel
     {
         public bool Active { get; set; }
