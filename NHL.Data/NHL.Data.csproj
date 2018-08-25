@@ -30,6 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -42,6 +45,7 @@
   <ItemGroup>
     <Compile Include="Attributes\ObjectAnnotationAttribute.cs" />
     <Compile Include="Enums\GameTypeEnum.cs" />
+    <Compile Include="Interfaces\IIdentityNHLModel.cs" />
     <Compile Include="Interfaces\INHLModel.cs" />
     <Compile Include="Model\Conference.cs" />
     <Compile Include="Model\Division.cs" />
@@ -73,6 +77,9 @@
       <Project>{fa548584-127c-4071-aedb-5b994def1360}</Project>
       <Name>NHL.Core</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

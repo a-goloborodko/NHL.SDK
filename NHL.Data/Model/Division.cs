@@ -4,7 +4,7 @@ using NHL.Data.Interfaces;
 namespace NHL.Data.Model
 {
     [ObjectAnnotation("divisions")]
-    public class Division : INHLModel
+    public class Division : IIdentityNHLModel
     {
         public string Abbreviation { get; set; }
         public bool Active { get; set; }

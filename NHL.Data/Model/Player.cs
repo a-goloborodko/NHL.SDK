@@ -4,7 +4,7 @@ using NHL.Data.Interfaces;
 namespace NHL.Data.Model
 {
     [ObjectAnnotation("people")]
-    public class Player : INHLModel
+    public class Player : IIdentityNHLModel
     {
         public bool Active { get; set; }
         public bool AlternateCaptain { get; set; }

@@ -41,11 +41,11 @@ namespace NHL.Client.API
                         return new ApiResult<T>((int)response.StatusCode, default(T));
                     }
 
-                    if (typeof(T) == typeof(byte[]))
-                    {
-                        var responseData = await response.Content.ReadAsByteArrayAsync();
-                        return new ApiResult<T>((int)response.StatusCode, (T)(object)responseData);
-                    }
+                    //if (typeof(T) == typeof(byte[]))
+                    //{
+                    //    var responseData = await response.Content.ReadAsByteArrayAsync();
+                    //    return new ApiResult<T>((int)response.StatusCode, (T)(object)responseData);
+                    //}
 
                     string responseString = await response.Content.ReadAsStringAsync();
 
@@ -54,19 +54,19 @@ namespace NHL.Client.API
                         return new ApiResult<T>((int)HttpStatusCode.BadRequest, default(T));
                     }
 
-                    if (typeof(T) == typeof(String))
-                    {
+                    //if (typeof(T) == typeof(String))
+                    //{
                         return new ApiResult<T>((int)response.StatusCode, (T)(object)responseString);
-                    }
+                    //}
 
-                    if (typeof(T) == typeof(bool))
-                    {
-                        return new ApiResult<T>((int)response.StatusCode, (T)((object)bool.Parse(responseString)));
-                    }
+                    //if (typeof(T) == typeof(bool))
+                    //{
+                    //    return new ApiResult<T>((int)response.StatusCode, (T)((object)bool.Parse(responseString)));
+                    //}
 
-                    var model = JsonConvert.DeserializeObject<T>(responseString);
+                    //var model = JsonConvert.DeserializeObject<T>(responseString);
 
-                    return new ApiResult<T>((int)response.StatusCode, model);
+                    //return new ApiResult<T>((int)response.StatusCode, model);
                 }
                 catch (Exception ex)
                 {

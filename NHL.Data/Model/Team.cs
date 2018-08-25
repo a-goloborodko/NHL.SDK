@@ -4,7 +4,7 @@ using NHL.Data.Interfaces;
 namespace NHL.Data.Model
 {
     [ObjectAnnotation("teams")]
-    public class Team : INHLModel
+    public class Team : IIdentityNHLModel
     {
         public string Abbreviation { get; set; }
         public bool Active { get; set; }

@@ -1,34 +1,33 @@
-﻿using NHL.Client.RequestBuilders;
-using NHL.Client.RequestModels;
+﻿using NHL.Client.Requests;
 using NHL.Data.Model;
 
 namespace NHL.Client
 {
     public class NHLClient
     {
-        public GeneralRequestBuilder<Conference, GeneralRequestModel> GetConferences()
+        public GeneralRequest<Conference> GetConferences()
         {
-            return new GeneralRequestBuilder<Conference, GeneralRequestModel>(new GeneralRequestModel());
+            return new GeneralRequest<Conference>();
         }
 
-        public GeneralRequestBuilder<Division, GeneralRequestModel> GetDivisions()
+        public GeneralRequest<Division> GetDivisions()
         {
-            return new GeneralRequestBuilder<Division, GeneralRequestModel>(new GeneralRequestModel());
+            return new GeneralRequest<Division>();
         }
 
-        public GeneralRequestBuilder<Team, GeneralRequestModel> GetTeams()
+        public GeneralRequest<Team> GetTeams()
         {
-            return new GeneralRequestBuilder<Team, GeneralRequestModel>(new GeneralRequestModel());
+            return new GeneralRequest<Team>();
         }
 
-        public GeneralRequestBuilder<Franchise, GeneralRequestModel> GetFranchises()
+        public GeneralRequest<Franchise> GetFranchises()
         {
-            return new GeneralRequestBuilder<Franchise, GeneralRequestModel>(new GeneralRequestModel());
+            return new GeneralRequest<Franchise>();
         }
 
-        public GeneralRequestBuilder<Player, GeneralRequestModel> GetPlayer()
+        public GeneralRequest<Player> GetPlayer()
         {
-            return new GeneralRequestBuilder<Player, GeneralRequestModel>(new GeneralRequestModel());
+            return new GeneralRequest<Player>();
         }
     }
 }
