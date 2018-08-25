@@ -1,8 +1,10 @@
-﻿using NHL.Data.Interfaces;
+﻿using NHL.Data.Attributes;
+using NHL.Data.Interfaces;
 
 namespace NHL.Data.Model
 {
-    public class Player : INHLModel
+    [ObjectAnnotation("people")]
+    public class Player : IIdentityNHLModel
     {
         public bool Active { get; set; }
         public bool AlternateCaptain { get; set; }

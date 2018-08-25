@@ -1,8 +1,10 @@
-﻿using NHL.Data.Interfaces;
+﻿using NHL.Data.Attributes;
+using NHL.Data.Interfaces;
 
 namespace NHL.Data.Model
 {
-    public class Conference : INHLModel
+    [ObjectAnnotation("conferences")]
+    public class Conference : IIdentityNHLModel
     {
         public string Abbreviation { get; set; }
         public bool Active { get; set; }

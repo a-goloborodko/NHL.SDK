@@ -1,8 +1,10 @@
-﻿using NHL.Data.Interfaces;
+﻿using NHL.Data.Attributes;
+using NHL.Data.Interfaces;
 
 namespace NHL.Data.Model
 {
-    public class Team : INHLModel
+    [ObjectAnnotation("teams")]
+    public class Team : IIdentityNHLModel
     {
         public string Abbreviation { get; set; }
         public bool Active { get; set; }
