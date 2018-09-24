@@ -126,6 +126,9 @@
   <data name="Franchises" xml:space="preserve">
     <value>https://statsapi.web.nhl.com/api/v1/franchises/</value>
   </data>
+  <data name="Leaders" xml:space="preserve">
+    <value>http://www.nhl.com/stats/rest/leaders</value>
+  </data>
   <data name="People" xml:space="preserve">
     <value>https://statsapi.web.nhl.com/api/v1/people/</value>
   </data>

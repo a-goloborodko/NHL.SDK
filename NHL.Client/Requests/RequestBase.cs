@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace NHL.Client.Requests
 {
     public abstract class RequestBase<TResult, TRequest> : IRequest<TResult>
-        where TResult : INHLModel
+        //where TResult : INHLModel
         where TRequest : class, IRequestModel, new()
     {
         protected FluentBuilder<TRequest> FluentBuilder { get; }
@@ -23,7 +23,7 @@ namespace NHL.Client.Requests
             FluentBuilder = new FluentBuilder<TRequest>(RequestModel);
         }
 
-        public virtual Task<List<TResult>> ExecuteAsync()
+        public virtual Task<TResult> ExecuteAsync()
         {
             return _requestHandler.ExecuteRequestAsync(RequestModel);
         }

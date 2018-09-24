@@ -1,17 +1,23 @@
-﻿using NHL.Client.RequestModels;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using NHL.Client.Exceptions;
+using NHL.Client.RequestModels;
 using NHL.Client.Resources;
+using NHL.Data.Attributes;
 using NHL.Data.Interfaces;
 using NHL.Data.Model;
 using System;
 using System.Collections.Generic;
+using System.Reflection;
 
 namespace NHL.Client.RequestHandlers
 {
-    public sealed class GeneralRequestHandler<TResult> : RequestHandlerBase<TResult, GeneralRequestModel>
-        where TResult : INHLModel
+    public sealed class GeneralRequestHandler<TResult> : RequestHandlerBase<List<TResult>, GeneralRequestModel>
     {
-
         private static readonly Dictionary<Type, string> switchRequestUrl;
+        private static string jsonObjectAnnotationName;
+
+        protected override Type ModelType => base.ModelType.GetGenericArguments()[0];
 
         #region ctors
         static GeneralRequestHandler()
@@ -26,6 +32,7 @@ namespace NHL.Client.RequestHandlers
 
         internal GeneralRequestHandler()
         {
+            jsonObjectAnnotationName = ModelType.GetCustomAttribute<ObjectAnnotationAttribute>()?.JsonObjectName;
         }
         #endregion
 
@@ -50,6 +57,30 @@ namespace NHL.Client.RequestHandlers
             }
 
             return new Uri(requestUrl);
+        }
+
+        protected override List<TResult> ParseResponse(string response)
+        {
+            if (string.IsNullOrWhiteSpace(response))
+            {
+                return new List<TResult>();
+            }
+
+            try
+            {
+                var parsedJObject = JObject.Parse(response);
+
+                if (string.IsNullOrWhiteSpace(jsonObjectAnnotationName))
+                {
+                    throw new NotSupportedException($"{this.GetType().Name} doesn't support {ModelType.Name} model");
+                }
+
+                return JsonConvert.DeserializeObject<List<TResult>>(parsedJObject[jsonObjectAnnotationName].ToString());
+            }
+            catch(Exception ex)
+            {
+                throw new NHLClientInternalException("Internal error on data parsing");
+            }
         }
     }
 }
