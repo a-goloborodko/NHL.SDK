@@ -52,12 +52,15 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RequestHandlers\GeneralRequestHandler.cs" />
     <Compile Include="RequestHandlers\IRequestHandler.cs" />
+    <Compile Include="RequestHandlers\LeadersRequestHandler.cs" />
     <Compile Include="RequestHandlers\RequestHandlerBase.cs" />
     <Compile Include="RequestModels\IRequestModel.cs" />
+    <Compile Include="RequestModels\LeadersRequestModel.cs" />
     <Compile Include="Requests\FluentBuilder.cs" />
     <Compile Include="Requests\GeneralRequest.cs" />
     <Compile Include="RequestModels\GeneralRequestModel.cs" />
     <Compile Include="Requests\IRequest.cs" />
+    <Compile Include="Requests\LeadersRequest.cs" />
     <Compile Include="Requests\RequestBase.cs" />
     <Compile Include="Resources\ApiUrls.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -67,6 +70,10 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\NHL.Core\NHL.Core.csproj">
+      <Project>{FA548584-127C-4071-AEDB-5B994DEF1360}</Project>
+      <Name>NHL.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\NHL.Data\NHL.Data.csproj">
       <Project>{8ed17fbb-8535-4c35-ae37-4af636c0a79d}</Project>
       <Name>NHL.Data</Name>

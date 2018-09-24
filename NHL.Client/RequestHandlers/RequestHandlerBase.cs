@@ -1,13 +1,10 @@
 ﻿using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using NHL.Client.API;
 using NHL.Client.Exceptions;
 using NHL.Client.RequestModels;
-using NHL.Data.Attributes;
 using NHL.Data.Interfaces;
 using System;
 using System.Collections.Generic;
-using System.Reflection;
 using System.Threading.Tasks;
 
 namespace NHL.Client.RequestHandlers
@@ -35,15 +32,7 @@ namespace NHL.Client.RequestHandlers
 
             try
             {
-                var parsedJObject = JObject.Parse(response);
-                var modelJObjectAnnotationAttribute = ModelType.GetCustomAttribute<ObjectAnnotationAttribute>();
-
-                if (modelJObjectAnnotationAttribute == null)
-                {
-                    throw new NotSupportedException($"{this.GetType().Name} doesn't support {ModelType.Name} model");
-                }
-
-                return JsonConvert.DeserializeObject<List<TResult>>(parsedJObject[modelJObjectAnnotationAttribute.JsonObjectName].ToString());
+                return JsonConvert.DeserializeObject<List<TResult>>(response);
             }
             catch
             {

@@ -45,11 +45,16 @@
   <ItemGroup>
     <Compile Include="Attributes\ObjectAnnotationAttribute.cs" />
     <Compile Include="Enums\GameTypeEnum.cs" />
+    <Compile Include="Enums\TeamEnum.cs" />
+    <Compile Include="Helpers\SeasonHelper.cs" />
     <Compile Include="Interfaces\IIdentityNHLModel.cs" />
     <Compile Include="Interfaces\INHLModel.cs" />
     <Compile Include="Model\Conference.cs" />
     <Compile Include="Model\Division.cs" />
     <Compile Include="Model\Franchise.cs" />
+    <Compile Include="Model\Leaders\Leader.cs" />
+    <Compile Include="Model\Leaders\LeaderMeasure.cs" />
+    <Compile Include="Model\Leaders\LeadersStatistic.cs" />
     <Compile Include="Model\Player.cs" />
     <Compile Include="Model\PlayerStatistic.cs" />
     <Compile Include="Enums\SeasonEnum.cs">

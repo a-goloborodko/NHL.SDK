@@ -1,9 +1,14 @@
-﻿using NHL.Client.RequestModels;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using NHL.Client.Exceptions;
+using NHL.Client.RequestModels;
 using NHL.Client.Resources;
+using NHL.Data.Attributes;
 using NHL.Data.Interfaces;
 using NHL.Data.Model;
 using System;
 using System.Collections.Generic;
+using System.Reflection;
 
 namespace NHL.Client.RequestHandlers
 {
@@ -50,6 +55,31 @@ namespace NHL.Client.RequestHandlers
             }
 
             return new Uri(requestUrl);
+        }
+
+        protected override List<TResult> ParseResponse(string response)
+        {
+            if (string.IsNullOrWhiteSpace(response))
+            {
+                return new List<TResult>();
+            }
+
+            try
+            {
+                var parsedJObject = JObject.Parse(response);
+                var modelJObjectAnnotationAttribute = ModelType.GetCustomAttribute<ObjectAnnotationAttribute>();
+
+                if (modelJObjectAnnotationAttribute == null)
+                {
+                    throw new NotSupportedException($"{this.GetType().Name} doesn't support {ModelType.Name} model");
+                }
+
+                return JsonConvert.DeserializeObject<List<TResult>>(parsedJObject[modelJObjectAnnotationAttribute.JsonObjectName].ToString());
+            }
+            catch
+            {
+                throw new NHLClientInternalException("Internal error on data parsing");
+            }
         }
     }
 }
