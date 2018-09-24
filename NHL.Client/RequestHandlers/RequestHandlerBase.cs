@@ -4,16 +4,16 @@ using NHL.Client.Exceptions;
 using NHL.Client.RequestModels;
 using NHL.Data.Interfaces;
 using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace NHL.Client.RequestHandlers
 {
     public abstract class RequestHandlerBase<TResult, TRequest> : IRequestHandler<TResult, TRequest>
-        where TResult : INHLModel
+        //where TResult : INHLModel
         where TRequest : IRequestModel
     {
-        protected readonly Type ModelType = typeof(TResult);
+        protected virtual Type ModelType { get; } = typeof(TResult);
+        //protected readonly Type ModelType = typeof(TResult);
         protected abstract Uri GenerateUrl(TRequest request);
         protected IApiClient ApiClient { get; } = new ApiClient();  //TODO: add injection
 
@@ -23,16 +23,16 @@ namespace NHL.Client.RequestHandlers
             return ApiClient.GetAsync<string>(url);
         }
 
-        protected virtual List<TResult> ParseResponse(string response)
+        protected virtual TResult ParseResponse(string response)
         {
             if (string.IsNullOrWhiteSpace(response))
             {
-                return new List<TResult>();
+                return default(TResult);
             }
 
             try
             {
-                return JsonConvert.DeserializeObject<List<TResult>>(response);
+                return JsonConvert.DeserializeObject<TResult>(response);
             }
             catch
             {
@@ -40,7 +40,7 @@ namespace NHL.Client.RequestHandlers
             }
         }
 
-        public async Task<List<TResult>> ExecuteRequestAsync(TRequest request)
+        public async Task<TResult> ExecuteRequestAsync(TRequest request)
         {
             var url = GenerateUrl(request);
             var response = await MakeHttpRequestAsync(url);
