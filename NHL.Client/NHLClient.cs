@@ -29,5 +29,10 @@ namespace NHL.Client
         {
             return new GeneralRequest<Player>();
         }
+
+        public LeadersRequest GetLeaders()
+        {
+            return new LeadersRequest();
+        }
     }
 }
