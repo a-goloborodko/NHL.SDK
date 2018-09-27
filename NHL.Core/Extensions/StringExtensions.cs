@@ -2,6 +2,7 @@
 
 [assembly: InternalsVisibleTo("NHL.Data")]
 [assembly: InternalsVisibleTo("NHL.Client")]
+[assembly: InternalsVisibleTo("NHL.Tests")]
 namespace NHL.Core.Extensions
 {
     internal static class StringExtensions
