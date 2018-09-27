@@ -77,7 +77,7 @@ namespace NHL.Client.RequestHandlers
 
                 return JsonConvert.DeserializeObject<List<TResult>>(parsedJObject[jsonObjectAnnotationName].ToString());
             }
-            catch(Exception ex)
+            catch
             {
                 throw new NHLClientInternalException("Internal error on data parsing");
             }
