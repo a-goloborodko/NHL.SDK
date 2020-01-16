@@ -12,6 +12,7 @@ namespace NHL_Core.Tests
             var playersRequest = Client.GetPlayer();
             var players = await playersRequest.ExecuteAsync();
 
+            Assert.Single(players.Errors);
             Assert.False(players.IsSuccess);
         }
 
@@ -19,7 +20,7 @@ namespace NHL_Core.Tests
         public async Task GetPlayerById()
         {
             var playersRequest = Client.GetPlayer();
-            playersRequest.Id = 8471675;
+            playersRequest.Set.Id = 8471675;
             var players = await playersRequest.ExecuteAsync();
 
             Assert.True(players.IsSuccess);

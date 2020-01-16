@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using NHL.Core.Extensions;
+using System.Linq;
 using System.Threading.Tasks;
 using Xunit;
-using NHL.Core.Extensions;
-using System.Linq;
 
 namespace NHL_Core.Tests
 {
@@ -24,7 +21,7 @@ namespace NHL_Core.Tests
         public async Task GetConferenceById()
         {
             var conferenceRequest = Client.GetConferences();
-            conferenceRequest.Id = 6;
+            conferenceRequest.Set.Id = 6;
 
             var conferences = await conferenceRequest.ExecuteAsync();
 
