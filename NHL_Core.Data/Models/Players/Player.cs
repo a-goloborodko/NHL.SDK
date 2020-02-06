@@ -1,5 +1,6 @@
 ﻿using NHL.Data.Attributes;
 using NHL.Data.Interfaces;
+using System.Collections.Generic;
 
 namespace NHL.Data.Models
 {
@@ -28,6 +29,7 @@ namespace NHL.Data.Models
         public string RosterStatus { get; set; }
         public string ShootsCatches { get; set; }
         public Position PrimaryPosition { get; set; }
+        public List<PlayerStatistic> Stats { get; set; } = new List<PlayerStatistic>();
 
         //TODO: create enums for Position (Type = Forward...)
     }

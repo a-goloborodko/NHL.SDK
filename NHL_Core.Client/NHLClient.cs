@@ -5,29 +5,29 @@ namespace NHL_Core.Client
 {
     public class NHLClient
     {
-        public Request<Conference> GetConferences()
+        public IdRequest<Conference> GetConferences()
         {
-            return new Request<Conference>();
+            return new IdRequest<Conference>();
         }
 
-        public Request<Division> GetDivisions()
+        public IdRequest<Division> GetDivisions()
         {
-            return new Request<Division>();
+            return new IdRequest<Division>();
         }
 
-        public Request<Team> GetTeams()
+        public IdRequest<Team> GetTeams()
         {
-            return new Request<Team>();
+            return new IdRequest<Team>();
         }
 
-        public Request<Franchise> GetFranchises()
+        public IdRequest<Franchise> GetFranchises()
         {
-            return new Request<Franchise>();
+            return new IdRequest<Franchise>();
         }
 
-        public Request<Player> GetPlayer()
+        public PlayersRequest GetPlayer()
         {
-            return new Request<Player>();
+            return new PlayersRequest();
         }
 
         //public LeadersRequest GetLeaders()

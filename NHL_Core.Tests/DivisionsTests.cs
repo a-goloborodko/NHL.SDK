@@ -1,8 +1,4 @@
-﻿using NHL.Core.Extensions;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Linq;
 using System.Threading.Tasks;
 using Xunit;
 
@@ -24,7 +20,7 @@ namespace NHL_Core.Tests
         public async Task GetDivisionById()
         {
             var divisionRequest = Client.GetDivisions();
-            divisionRequest.Id = 17;
+            divisionRequest.SetId(17);
 
             var divisions = await divisionRequest.ExecuteAsync();
 

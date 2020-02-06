@@ -21,7 +21,7 @@ namespace NHL_Core.Tests
         public async Task GetFranchiseById()
         {
             var franchiseRequest = Client.GetFranchises();
-            franchiseRequest.Id = 1;
+            franchiseRequest.SetId(1);
 
             var franchises = await franchiseRequest.ExecuteAsync();
 
