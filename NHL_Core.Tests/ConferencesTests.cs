@@ -13,8 +13,8 @@ namespace NHL_Core.Tests
             var conferences = await Client.GetConferences().ExecuteAsync();
 
             Assert.True(conferences.IsSuccess);
-            Assert.True(conferences.Results.SafeAny());
-            Assert.Equal(2, conferences.Results.Count);
+            Assert.True(conferences.Data.SafeAny());
+            Assert.Equal(2, conferences.Data.Count);
         }
 
         [Fact]
@@ -26,7 +26,7 @@ namespace NHL_Core.Tests
 
             var conferences = await conferenceRequest.ExecuteAsync();
 
-            bool hasResponce = conferences.Results.SafeAny();
+            bool hasResponce = conferences.Data.SafeAny();
             Assert.True(conferences.IsSuccess);
             Assert.True(hasResponce);
 
@@ -36,9 +36,9 @@ namespace NHL_Core.Tests
                 return;
             }
 
-            Assert.Single(conferences.Results);
+            Assert.Single(conferences.Data);
 
-            var conferenceToCompare = conferences.Results.First();
+            var conferenceToCompare = conferences.Data.First();
 
             Assert.Equal("E", conferenceToCompare.Abbreviation);
             Assert.Equal("Eastern", conferenceToCompare.Name);

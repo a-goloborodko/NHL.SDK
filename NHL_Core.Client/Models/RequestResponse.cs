@@ -8,16 +8,16 @@ namespace NHL_Core.Client.Models
     {
         private RequestResponse(
             bool isSuccess,
-            List<TResult> results,
+            List<TResult> data,
             List<string> errors)
         {
             IsSuccess = isSuccess;
-            Results = results ?? new List<TResult>();
+            Data = data ?? new List<TResult>();
             Errors = errors ?? new List<string>();
         }
 
         public bool IsSuccess { get; }
-        public List<TResult> Results { get; }
+        public List<TResult> Data { get; }
         public List<string> Errors { get; }
 
         internal static RequestResponse<TResult> Fail(List<string> errors)

@@ -12,8 +12,8 @@ namespace NHL_Core.Tests
             var divisions = await Client.GetDivisions().ExecuteAsync();
 
             Assert.True(divisions.IsSuccess);
-            Assert.NotEmpty(divisions.Results);
-            Assert.Equal(4, divisions.Results.Count);
+            Assert.NotEmpty(divisions.Data);
+            Assert.Equal(4, divisions.Data.Count);
         }
 
         [Fact]
@@ -25,11 +25,11 @@ namespace NHL_Core.Tests
             var divisions = await divisionRequest.ExecuteAsync();
 
             Assert.True(divisions.IsSuccess);
-            Assert.NotEmpty(divisions.Results);
+            Assert.NotEmpty(divisions.Data);
 
-            Assert.Single(divisions.Results);
+            Assert.Single(divisions.Data);
 
-            var divisionToCompare = divisions.Results.First();
+            var divisionToCompare = divisions.Data.First();
 
 
             Assert.Equal("A", divisionToCompare.Abbreviation);

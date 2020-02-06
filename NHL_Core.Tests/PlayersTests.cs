@@ -26,11 +26,11 @@ namespace NHL_Core.Tests
             var players = await playersRequest.ExecuteAsync();
 
             Assert.True(players.IsSuccess);
-            Assert.NotEmpty(players.Results);
+            Assert.NotEmpty(players.Data);
 
-            Assert.Single(players.Results);
+            Assert.Single(players.Data);
 
-            var playerCompare = players.Results.First();
+            var playerCompare = players.Data.First();
 
             Assert.Equal("Sidney", playerCompare.FirstName);
             Assert.Equal("Crosby", playerCompare.LastName);
@@ -48,11 +48,11 @@ namespace NHL_Core.Tests
                 .ExecuteAsync();
 
             Assert.True(players.IsSuccess);
-            Assert.NotEmpty(players.Results);
+            Assert.NotEmpty(players.Data);
 
-            Assert.Single(players.Results);
+            Assert.Single(players.Data);
 
-            var playerCompare = players.Results.First();
+            var playerCompare = players.Data.First();
 
             Assert.Equal("Sidney", playerCompare.FirstName);
             Assert.Equal("Crosby", playerCompare.LastName);
@@ -84,11 +84,11 @@ namespace NHL_Core.Tests
                 .ExecuteAsync();
 
             Assert.True(players.IsSuccess);
-            Assert.NotEmpty(players.Results);
+            Assert.NotEmpty(players.Data);
 
-            Assert.Single(players.Results);
+            Assert.Single(players.Data);
 
-            var playerCompare = players.Results.First();
+            var playerCompare = players.Data.First();
 
             Assert.Equal("Sidney", playerCompare.FirstName);
             Assert.Equal("Crosby", playerCompare.LastName);
@@ -112,11 +112,11 @@ namespace NHL_Core.Tests
                 .ExecuteAsync();
 
             Assert.True(players.IsSuccess);
-            Assert.NotEmpty(players.Results);
+            Assert.NotEmpty(players.Data);
 
-            Assert.Single(players.Results);
+            Assert.Single(players.Data);
 
-            var playerCompare = players.Results.First();
+            var playerCompare = players.Data.First();
 
             Assert.Equal("Sidney", playerCompare.FirstName);
             Assert.Equal("Crosby", playerCompare.LastName);
