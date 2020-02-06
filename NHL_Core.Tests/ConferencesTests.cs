@@ -21,7 +21,8 @@ namespace NHL_Core.Tests
         public async Task GetConferenceById()
         {
             var conferenceRequest = Client.GetConferences();
-            conferenceRequest.Set.Id = 6;
+
+            conferenceRequest.SetId(6);
 
             var conferences = await conferenceRequest.ExecuteAsync();
 

@@ -20,7 +20,7 @@ namespace NHL_Core.Tests
         public async Task GetDivisionById()
         {
             var divisionRequest = Client.GetDivisions();
-            divisionRequest.Set.Id = 17;
+            divisionRequest.SetId(17);
 
             var divisions = await divisionRequest.ExecuteAsync();
 

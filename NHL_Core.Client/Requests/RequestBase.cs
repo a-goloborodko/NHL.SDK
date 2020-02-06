@@ -3,25 +3,29 @@ using NHL.Data.Interfaces;
 using NHL_Core.Client.Constants;
 using NHL_Core.Client.Models;
 using NHL_Core.Client.RequestHandlers;
-using NHL_Core.Client.RequestModels;
+using NHL_Core.Core.Extensions;
 using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
+using System.Linq.Expressions;
+using System.Reflection;
 using System.Threading.Tasks;
 
 namespace NHL_Core.Client.Requests
 {
-    public class RequestBase<TResult, TRequestModel> : IRequest<TResult, TRequestModel>
+    public class RequestBase<TResult> : IRequest<TResult>
         where TResult : class, INHLModel, new()
-        where TRequestModel : class, IRequestModel<TResult>, new()
     {
-        public TRequestModel Set { get; private set; }
         protected IRequestHandler<TResult> _requestHandler;
+        protected NameValueCollection QueryParameters { get; set; }
 
-        internal RequestBase(IRequestHandler<TResult> requestHandler, TRequestModel requestModel)
+        internal RequestBase(IRequestHandler<TResult> requestHandler)
         {
             _requestHandler = requestHandler ?? throw new ArgumentNullException(nameof(requestHandler));
-            Set = requestModel ?? throw new ArgumentNullException(nameof(requestModel));
+            QueryParameters = new NameValueCollection();
         }
+
+        #region Public Methods
 
         public virtual Task<RequestResponse<TResult>> ExecuteAsync()
         {
@@ -30,7 +34,44 @@ namespace NHL_Core.Client.Requests
 
         public List<string> Validate()
         {
-            return Set.Validate();
+            return new List<string>();
+        }
+
+        #endregion
+
+        #region Protected Methods
+
+        protected void AddQueryParameter(string key, string value)
+        {
+            if (!key.HasValue())
+            {
+                throw new ArgumentNullException(nameof(key));
+            }
+
+            if (!value.HasValue())
+            {
+                throw new ArgumentNullException(nameof(value));
+            }
+
+            var existedValue = QueryParameters[key];
+
+            if (!existedValue.HasValue())
+            {
+                QueryParameters.Add(key, value);
+                return;
+            }
+
+            QueryParameters[key] = $"{existedValue},{value}";
+        }
+
+        protected virtual string GetQueryString()
+        {
+            if (QueryParameters.Keys.Count == 0)
+            {
+                return null;
+            }
+
+            return QueryParameters.ToQueryString();
         }
 
         protected virtual Uri GetRequestUri()
@@ -42,7 +83,7 @@ namespace NHL_Core.Client.Requests
                 throw new NotSupportedException($"Url for model {typeof(TResult)} not supported");
             }
 
-            var requestModelQueryParams = Set.GetRequestQueryParameters();
+            var requestModelQueryParams = GetQueryString();
 
             if (!requestModelQueryParams.HasValue())
             {
@@ -51,5 +92,35 @@ namespace NHL_Core.Client.Requests
 
             return new Uri(requestUrl, requestModelQueryParams);
         }
+
+        protected PropertyInfo GetPropertyInfo<TSource, TProperty>(
+    Expression<Func<TSource, TProperty>> propertyLambda)
+        {
+            Type type = typeof(TSource);
+
+            MemberExpression member = propertyLambda.Body as MemberExpression;
+            if (member == null)
+                throw new ArgumentException(string.Format(
+                    "Expression '{0}' refers to a method, not a property.",
+                    propertyLambda.ToString()));
+
+            PropertyInfo propInfo = member.Member as PropertyInfo;
+            if (propInfo == null)
+                throw new ArgumentException(string.Format(
+                    "Expression '{0}' refers to a field, not a property.",
+                    propertyLambda.ToString()));
+
+
+            if (type != propInfo.ReflectedType &&
+                !type.IsSubclassOf(propInfo.ReflectedType))
+                throw new ArgumentException(string.Format(
+                    "Expression '{0}' refers to a property that is not from type {1}.",
+                    propertyLambda.ToString(),
+                    type));
+
+            return propInfo;
+        }
+
+        #endregion
     }
 }

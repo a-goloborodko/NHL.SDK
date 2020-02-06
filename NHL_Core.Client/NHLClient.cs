@@ -25,9 +25,9 @@ namespace NHL_Core.Client
             return new IdRequest<Franchise>();
         }
 
-        public IdRequest<Player> GetPlayer()
+        public PlayersRequest GetPlayer()
         {
-            return new IdRequest<Player>();
+            return new PlayersRequest();
         }
 
         //public LeadersRequest GetLeaders()
