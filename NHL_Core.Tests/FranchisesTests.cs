@@ -13,8 +13,8 @@ namespace NHL_Core.Tests
             var conferences = await Client.GetFranchises().ExecuteAsync();
 
             Assert.True(conferences.IsSuccess);
-            Assert.NotEmpty(conferences.Results);
-            Assert.Equal(38, conferences.Results.Count);
+            Assert.NotEmpty(conferences.Data);
+            Assert.Equal(38, conferences.Data.Count);
         }
 
         [Fact]
@@ -26,11 +26,11 @@ namespace NHL_Core.Tests
             var franchises = await franchiseRequest.ExecuteAsync();
 
             Assert.True(franchises.IsSuccess);
-            Assert.NotEmpty(franchises.Results);
+            Assert.NotEmpty(franchises.Data);
 
-            Assert.Single(franchises.Results);
+            Assert.Single(franchises.Data);
 
-            var franchiseToCompare = franchises.Results.First();
+            var franchiseToCompare = franchises.Data.First();
 
             Assert.Equal(1, franchiseToCompare.Id);
             Assert.Equal(SeasonEnum._19171918, franchiseToCompare.FirstSeasonId);

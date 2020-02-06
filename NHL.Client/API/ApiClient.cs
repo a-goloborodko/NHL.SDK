@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 
 namespace NHL.Client.API
 {
-    //TODO: make internal
-    public class ApiClient : IApiClient
+    internal class ApiClient : IApiClient
     {
         private HttpClientSingleton _httpClient;
 

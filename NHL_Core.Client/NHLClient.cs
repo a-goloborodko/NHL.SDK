@@ -30,6 +30,16 @@ namespace NHL_Core.Client
             return new PlayersRequest();
         }
 
+        public Request<Season> GetSeasons()
+        {
+            return new Request<Season>();
+        }
+
+        public Request<CurrentSeason> GetCurrentSeasonSeason()
+        {
+            return new Request<CurrentSeason>();
+        }
+
         //public LeadersRequest GetLeaders()
         //{
         //    return null;
