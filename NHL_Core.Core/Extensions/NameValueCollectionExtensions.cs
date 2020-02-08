@@ -6,7 +6,7 @@ using System.Runtime.CompilerServices;
 [assembly: InternalsVisibleTo("NHL_Core.Tests")]
 [assembly: InternalsVisibleTo("NHL_Core.Data")]
 [assembly: InternalsVisibleTo("NHL_Core.Client")]
-namespace NHL_Core.Core.Extensions
+namespace NHL.Core.Extensions
 {
     internal static class NameValueCollectionExtensions
     {
@@ -16,7 +16,7 @@ namespace NHL_Core.Core.Extensions
 
             var array = (from key in urlQuesryParams.AllKeys
                          from value in urlQuesryParams.GetValues(key)
-                         select string.Format("{0}={1}", key, value))
+                         select string.Format("{0}={1}", key, System.Net.WebUtility.UrlEncode(value)))
                 .ToArray();
             return "?" + string.Join("&", array);
         }

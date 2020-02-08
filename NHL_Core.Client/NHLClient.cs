@@ -30,14 +30,14 @@ namespace NHL_Core.Client
             return new STAPlayersRequest();
         }
 
-        public STARequest<Season> GetSeasons()
+        public Request<Season> GetSeasons()
         {
-            return new STARequest<Season>();
+            return new Request<Season>();
         }
 
-        public STARequest<CurrentSeason> GetCurrentSeasonSeason()
+        public Request<CurrentSeason> GetCurrentSeasonSeason()
         {
-            return new STARequest<CurrentSeason>();
+            return new Request<CurrentSeason>();
         }
 
         //public LeadersRequest GetLeaders()

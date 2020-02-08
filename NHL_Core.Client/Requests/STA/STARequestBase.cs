@@ -3,7 +3,6 @@ using NHL.Data.Interfaces;
 using NHL_Core.Client.Constants;
 using NHL_Core.Client.Models;
 using NHL_Core.Client.RequestHandlers;
-using NHL_Core.Core.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
