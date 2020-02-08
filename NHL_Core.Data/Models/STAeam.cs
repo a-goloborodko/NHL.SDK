@@ -4,12 +4,12 @@ using NHL.Data.Interfaces;
 namespace NHL.Data.Models
 {
     [ObjectAnnotation("teams")]
-    public class Team : IIdentityNHLModel
+    public class STAeam : IIdentityNHLModel
     {
         public string Abbreviation { get; set; }
         public bool Active { get; set; }
-        public Conference Conference { get; set; }
-        public Division Division { get; set; }
+        public STAConference Conference { get; set; }
+        public STADivision Division { get; set; }
         public int FirstYearOfPlay { get; set; }
         public Franchise Franchise { get; set; }
         public int FranchiseId { get; set; }
@@ -19,6 +19,6 @@ namespace NHL.Data.Models
         public string Link { get; set; }
         public string Name { get; set; }
         public string TeamName { get; set; }
-        public Venue Venue { get; set; }
+        public STAVenue Venue { get; set; }
     }
 }

@@ -5,7 +5,7 @@ using System.Collections.Generic;
 namespace NHL.Data.Models
 {
     [ObjectAnnotation("people")]
-    public class Player : IIdentityNHLModel
+    public class STAPlayer : IIdentityNHLModel
     {
         public bool Active { get; set; }
         public bool AlternateCaptain { get; set; }
@@ -14,7 +14,7 @@ namespace NHL.Data.Models
         public string BirthDate { get; set; }
         public bool Captain { get; set; }
         public int CurrentAge { get; set; }
-        public Team CurrentTeam { get; set; }
+        public STAeam CurrentTeam { get; set; }
         public long TeamId { get; set; }
         public string FirstName { get; set; }
         public string FullName { get; set; }
@@ -28,8 +28,8 @@ namespace NHL.Data.Models
         public bool Rookie { get; set; }
         public string RosterStatus { get; set; }
         public string ShootsCatches { get; set; }
-        public Position PrimaryPosition { get; set; }
-        public List<PlayerStatistic> Stats { get; set; } = new List<PlayerStatistic>();
+        public STAPosition PrimaryPosition { get; set; }
+        public List<STAPlayerStatistic> Stats { get; set; } = new List<STAPlayerStatistic>();
 
         //TODO: create enums for Position (Type = Forward...)
     }

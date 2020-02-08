@@ -13,7 +13,7 @@ namespace NHL_Core.Tests
         {
             var seasons = await Client.GetSeasons().ExecuteAsync();
 
-            Assert.True(seasons.IsSuccess);
+            Assert.True(seasons.Success);
             Assert.NotEmpty(seasons.Data);
 
             var firstSeason = seasons.Data.First();
@@ -31,7 +31,7 @@ namespace NHL_Core.Tests
         {
             var currentSeasonResponse = await Client.GetCurrentSeasonSeason().ExecuteAsync();
 
-            Assert.True(currentSeasonResponse.IsSuccess);
+            Assert.True(currentSeasonResponse.Success);
             Assert.Single(currentSeasonResponse.Data);
 
             var currentSeason = currentSeasonResponse.Data.Single();

@@ -12,7 +12,7 @@ namespace NHL_Core.Tests
         {
             var conferences = await Client.GetFranchises().ExecuteAsync();
 
-            Assert.True(conferences.IsSuccess);
+            Assert.True(conferences.Success);
             Assert.NotEmpty(conferences.Data);
             Assert.Equal(38, conferences.Data.Count);
         }
@@ -25,7 +25,7 @@ namespace NHL_Core.Tests
 
             var franchises = await franchiseRequest.ExecuteAsync();
 
-            Assert.True(franchises.IsSuccess);
+            Assert.True(franchises.Success);
             Assert.NotEmpty(franchises.Data);
 
             Assert.Single(franchises.Data);

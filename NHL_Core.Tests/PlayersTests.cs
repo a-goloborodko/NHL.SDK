@@ -15,7 +15,7 @@ namespace NHL_Core.Tests
             var players = await playersRequest.ExecuteAsync();
 
             Assert.Single(players.Errors);
-            Assert.False(players.IsSuccess);
+            Assert.False(players.Success);
         }
 
         [Fact]
@@ -25,7 +25,7 @@ namespace NHL_Core.Tests
             playersRequest.SetId(playerId);
             var players = await playersRequest.ExecuteAsync();
 
-            Assert.True(players.IsSuccess);
+            Assert.True(players.Success);
             Assert.NotEmpty(players.Data);
 
             Assert.Single(players.Data);
@@ -47,7 +47,7 @@ namespace NHL_Core.Tests
                 .SetId(playerId)
                 .ExecuteAsync();
 
-            Assert.True(players.IsSuccess);
+            Assert.True(players.Success);
             Assert.NotEmpty(players.Data);
 
             Assert.Single(players.Data);
@@ -83,7 +83,7 @@ namespace NHL_Core.Tests
                 .SetId(playerId)
                 .ExecuteAsync();
 
-            Assert.True(players.IsSuccess);
+            Assert.True(players.Success);
             Assert.NotEmpty(players.Data);
 
             Assert.Single(players.Data);
@@ -111,7 +111,7 @@ namespace NHL_Core.Tests
                 .SetId(playerId)
                 .ExecuteAsync();
 
-            Assert.True(players.IsSuccess);
+            Assert.True(players.Success);
             Assert.NotEmpty(players.Data);
 
             Assert.Single(players.Data);

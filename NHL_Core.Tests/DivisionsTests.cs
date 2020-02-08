@@ -11,7 +11,7 @@ namespace NHL_Core.Tests
         {
             var divisions = await Client.GetDivisions().ExecuteAsync();
 
-            Assert.True(divisions.IsSuccess);
+            Assert.True(divisions.Success);
             Assert.NotEmpty(divisions.Data);
             Assert.Equal(4, divisions.Data.Count);
         }
@@ -24,7 +24,7 @@ namespace NHL_Core.Tests
 
             var divisions = await divisionRequest.ExecuteAsync();
 
-            Assert.True(divisions.IsSuccess);
+            Assert.True(divisions.Success);
             Assert.NotEmpty(divisions.Data);
 
             Assert.Single(divisions.Data);

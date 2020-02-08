@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace NHL_Core.Client.Requests
 {
-    public interface IRequest<TResult>
+    public interface ISTARequest<TResult>
         where TResult : INHLModel
     {
         List<string> Validate();

@@ -12,7 +12,7 @@ namespace NHL_Core.Tests
         {
             var conferences = await Client.GetConferences().ExecuteAsync();
 
-            Assert.True(conferences.IsSuccess);
+            Assert.True(conferences.Success);
             Assert.True(conferences.Data.SafeAny());
             Assert.Equal(2, conferences.Data.Count);
         }
@@ -27,7 +27,7 @@ namespace NHL_Core.Tests
             var conferences = await conferenceRequest.ExecuteAsync();
 
             bool hasResponce = conferences.Data.SafeAny();
-            Assert.True(conferences.IsSuccess);
+            Assert.True(conferences.Success);
             Assert.True(hasResponce);
 
             if (!hasResponce)

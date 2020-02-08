@@ -7,11 +7,11 @@ namespace NHL_Core.Client.Constants
     internal static class APIConstants
     {
         public static readonly Dictionary<Type, Uri> RequestUrls = new Dictionary<Type, Uri>() {
-            { typeof(Conference), new Uri(APIUrls.Conferences) },
-            { typeof(Division), new Uri(APIUrls.Divisions) },
+            { typeof(STAConference), new Uri(APIUrls.Conferences) },
+            { typeof(STADivision), new Uri(APIUrls.Divisions) },
             { typeof(Franchise), new Uri(APIUrls.Franchises) },
-            { typeof(Team), new Uri(APIUrls.Teams) },
-            { typeof(Player), new Uri(APIUrls.People) },
+            { typeof(STAeam), new Uri(APIUrls.Teams) },
+            { typeof(STAPlayer), new Uri(APIUrls.People) },
             { typeof(Season), new Uri(APIUrls.Seasons) },
             { typeof(CurrentSeason), new Uri(APIUrls.CurrentSeason) },
         };

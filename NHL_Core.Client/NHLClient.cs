@@ -5,39 +5,39 @@ namespace NHL_Core.Client
 {
     public class NHLClient
     {
-        public IdRequest<Conference> GetConferences()
+        public STAIdRequest<STAConference> GetConferences()
         {
-            return new IdRequest<Conference>();
+            return new STAIdRequest<STAConference>();
         }
 
-        public IdRequest<Division> GetDivisions()
+        public STAIdRequest<STADivision> GetDivisions()
         {
-            return new IdRequest<Division>();
+            return new STAIdRequest<STADivision>();
         }
 
-        public IdRequest<Team> GetTeams()
+        public STAIdRequest<STAeam> GetTeams()
         {
-            return new IdRequest<Team>();
+            return new STAIdRequest<STAeam>();
         }
 
-        public IdRequest<Franchise> GetFranchises()
+        public STAIdRequest<Franchise> GetFranchises()
         {
-            return new IdRequest<Franchise>();
+            return new STAIdRequest<Franchise>();
         }
 
-        public PlayersRequest GetPlayer()
+        public STAPlayersRequest GetPlayer()
         {
-            return new PlayersRequest();
+            return new STAPlayersRequest();
         }
 
-        public Request<Season> GetSeasons()
+        public STARequest<Season> GetSeasons()
         {
-            return new Request<Season>();
+            return new STARequest<Season>();
         }
 
-        public Request<CurrentSeason> GetCurrentSeasonSeason()
+        public STARequest<CurrentSeason> GetCurrentSeasonSeason()
         {
-            return new Request<CurrentSeason>();
+            return new STARequest<CurrentSeason>();
         }
 
         //public LeadersRequest GetLeaders()

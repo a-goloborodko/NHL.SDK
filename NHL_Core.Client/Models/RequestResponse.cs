@@ -7,16 +7,16 @@ namespace NHL_Core.Client.Models
         where TResult : INHLModel
     {
         private RequestResponse(
-            bool isSuccess,
+            bool success,
             List<TResult> data,
             List<string> errors)
         {
-            IsSuccess = isSuccess;
+            Success = success;
             Data = data ?? new List<TResult>();
             Errors = errors ?? new List<string>();
         }
 
-        public bool IsSuccess { get; }
+        public bool Success { get; }
         public List<TResult> Data { get; }
         public List<string> Errors { get; }
 

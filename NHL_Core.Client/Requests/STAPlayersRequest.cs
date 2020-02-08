@@ -8,14 +8,14 @@ using System.Linq.Expressions;
 
 namespace NHL_Core.Client.Requests
 {
-    public class PlayersRequest : IdRequest<Player>
+    public class STAPlayersRequest : STAIdRequest<STAPlayer>
     {
-        internal PlayersRequest()
+        internal STAPlayersRequest()
             : base()
         {
         }
 
-        public PlayersRequest Include<TProperty>(Expression<Func<PlayerStatisticRequestModel, TProperty>> include)
+        public STAPlayersRequest Include<TProperty>(Expression<Func<STAPlayerStatisticRequestModel, TProperty>> include)
         {
             var property = GetPropertyInfo(include);
 
@@ -26,10 +26,10 @@ namespace NHL_Core.Client.Requests
 
             if (QueryParameters.Keys.Count == 0)
             {
-                AddQueryParameter(QueryParameterConstants.Expand, "person.stats,stats.team");
+                AddQueryParameter(STAQueryParameterConstants.Expand, "person.stats,stats.team");
             }
 
-            AddQueryParameter(QueryParameterConstants.Stats, requestParamName);
+            AddQueryParameter(STAQueryParameterConstants.Stats, requestParamName);
 
             return this;
         }

@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace NHL_Core.Client.RequestHandlers
 {
-    internal class RequestHandlerBase<TResult> : IRequestHandler<TResult>
+    internal class STARequestHandlerBase<TResult> : IRequestHandler<TResult>
         where TResult : INHLModel
     {
         protected static HttpClient HttpClient { get; } = HttpClientSingleton.Instance;
@@ -19,7 +19,7 @@ namespace NHL_Core.Client.RequestHandlers
 
         #region ctors
 
-        static RequestHandlerBase()
+        static STARequestHandlerBase()
         {
             jsonObjectAnnotationName = typeof(TResult).GetCustomAttribute<ObjectAnnotationAttribute>()?.JsonObjectName;
         }

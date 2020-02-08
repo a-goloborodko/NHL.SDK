@@ -13,13 +13,13 @@ using System.Threading.Tasks;
 
 namespace NHL_Core.Client.Requests
 {
-    public class RequestBase<TResult> : IRequest<TResult>
+    public class STARequestBase<TResult> : ISTARequest<TResult>
         where TResult : class, INHLModel, new()
     {
         protected IRequestHandler<TResult> _requestHandler;
         protected NameValueCollection QueryParameters { get; set; }
 
-        internal RequestBase(IRequestHandler<TResult> requestHandler)
+        internal STARequestBase(IRequestHandler<TResult> requestHandler)
         {
             _requestHandler = requestHandler ?? throw new ArgumentNullException(nameof(requestHandler));
             QueryParameters = new NameValueCollection();
