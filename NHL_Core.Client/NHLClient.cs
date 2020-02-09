@@ -54,5 +54,10 @@ namespace NHL_Core.Client
         {
             return new Request<Draft>();
         }
+
+        public SkaterLeadersByPointsRequest GetSkaterLeadersByPoints()
+        {
+            return new SkaterLeadersByPointsRequest();
+        }
     }
 }
