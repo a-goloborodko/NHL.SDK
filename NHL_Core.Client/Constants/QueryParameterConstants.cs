@@ -3,6 +3,7 @@
     internal static class QueryParameterConstants
     {
         public const string Sort = "sort";
+        public const string Include = "include";
 
         public static class SortDericationConstants
         {

@@ -11,7 +11,7 @@ namespace NHL.Data.Models
         public STAConference Conference { get; set; }
         public STADivision Division { get; set; }
         public int FirstYearOfPlay { get; set; }
-        public Franchise Franchise { get; set; }
+        public STAFranchise Franchise { get; set; }
         public int FranchiseId { get; set; }
         public string OfficialSiteUrl  { get; set; }
         public string ShortName { get; set; }

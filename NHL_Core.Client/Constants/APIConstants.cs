@@ -9,11 +9,12 @@ namespace NHL_Core.Client.Constants
         public static readonly Dictionary<Type, Uri> RequestUrls = new Dictionary<Type, Uri>() {
             { typeof(STAConference), new Uri(APIUrls.Conferences) },
             { typeof(STADivision), new Uri(APIUrls.Divisions) },
-            { typeof(Franchise), new Uri(APIUrls.Franchises) },
+            { typeof(STAFranchise), new Uri(APIUrls.Franchises) },
             { typeof(STAeam), new Uri(APIUrls.Teams) },
             { typeof(STAPlayer), new Uri(APIUrls.People) },
             { typeof(Season), new Uri(APIUrls.Seasons) },
             { typeof(CurrentSeason), new Uri(APIUrls.CurrentSeason) },
+            { typeof(Country), new Uri(APIUrls.Countries) },
         };
 
         internal static class APIUrls
@@ -25,6 +26,7 @@ namespace NHL_Core.Client.Constants
             public const string Teams = "https://statsapi.web.nhl.com/api/v1/teams/";
             public const string Seasons = "https://api.nhle.com/stats/rest/en/season/";
             public const string CurrentSeason = "https://api.nhle.com/stats/rest/en/componentSeason";
+            public const string Countries = "https://api.nhle.com/stats/rest/en/country";
         }
     }
 }

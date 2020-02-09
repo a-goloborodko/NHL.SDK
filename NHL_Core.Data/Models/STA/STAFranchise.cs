@@ -6,7 +6,7 @@ using NHL.Data.Interfaces;
 namespace NHL.Data.Models
 {
     [ObjectAnnotation("franchises")]
-    public class Franchise : IIdentityNHLModel
+    public class STAFranchise : IIdentityNHLModel
     {
         public SeasonEnum FirstSeasonId { get; set; }
         [JsonProperty("FranchiseId")]

@@ -5,12 +5,12 @@ using Xunit;
 
 namespace NHL_Core.Tests
 {
-    public class FranchisesTests : BaseNHLTest
+    public class STAFranchisesTests : BaseNHLTest
     {
         [Fact]
-        public async Task GetFranchises()
+        public async Task GetSTAFranchises()
         {
-            var conferences = await Client.GetFranchises().ExecuteAsync();
+            var conferences = await Client.GetSTAFranchises().ExecuteAsync();
 
             Assert.True(conferences.Success);
             Assert.NotEmpty(conferences.Data);
@@ -18,9 +18,9 @@ namespace NHL_Core.Tests
         }
 
         [Fact]
-        public async Task GetFranchiseById()
+        public async Task GetSTAFranchiseById()
         {
-            var franchiseRequest = Client.GetFranchises();
+            var franchiseRequest = Client.GetSTAFranchises();
             franchiseRequest.SetId(1);
 
             var franchises = await franchiseRequest.ExecuteAsync();

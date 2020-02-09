@@ -5,12 +5,12 @@ using Xunit;
 
 namespace NHL_Core.Tests
 {
-    public class ConferencesTests : BaseNHLTest
+    public class STAConferencesTests : BaseNHLTest
     {
         [Fact]
-        public async Task GetConferences()
+        public async Task GetSTAConferences()
         {
-            var conferences = await Client.GetConferences().ExecuteAsync();
+            var conferences = await Client.GetSTAConferences().ExecuteAsync();
 
             Assert.True(conferences.Success);
             Assert.True(conferences.Data.SafeAny());
@@ -18,9 +18,9 @@ namespace NHL_Core.Tests
         }
 
         [Fact]
-        public async Task GetConferenceById()
+        public async Task GetSTAConferenceById()
         {
-            var conferenceRequest = Client.GetConferences();
+            var conferenceRequest = Client.GetSTAConferences();
 
             conferenceRequest.SetId(6);
 

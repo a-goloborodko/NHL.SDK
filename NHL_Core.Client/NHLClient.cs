@@ -5,27 +5,27 @@ namespace NHL_Core.Client
 {
     public class NHLClient
     {
-        public STAIdRequest<STAConference> GetConferences()
+        public STAIdRequest<STAConference> GetSTAConferences()
         {
             return new STAIdRequest<STAConference>();
         }
 
-        public STAIdRequest<STADivision> GetDivisions()
+        public STAIdRequest<STADivision> GetSTADivisions()
         {
             return new STAIdRequest<STADivision>();
         }
 
-        public STAIdRequest<STAeam> GetTeams()
+        public STAIdRequest<STAeam> GetSTATeams()
         {
             return new STAIdRequest<STAeam>();
         }
 
-        public STAIdRequest<Franchise> GetFranchises()
+        public STAIdRequest<STAFranchise> GetSTAFranchises()
         {
-            return new STAIdRequest<Franchise>();
+            return new STAIdRequest<STAFranchise>();
         }
 
-        public STAPlayersRequest GetPlayer()
+        public STAPlayersRequest GetSTAPlayer()
         {
             return new STAPlayersRequest();
         }
@@ -40,9 +40,9 @@ namespace NHL_Core.Client
             return new Request<CurrentSeason>();
         }
 
-        //public LeadersRequest GetLeaders()
-        //{
-        //    return null;
-        //}
+        public Request<Country> GetCountries()
+        {
+            return new Request<Country>();
+        }
     }
 }
