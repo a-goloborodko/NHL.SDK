@@ -55,9 +55,19 @@ namespace NHL_Core.Client
             return new Request<Draft>();
         }
 
-        public SkaterLeadersByPointsRequest GetSkaterLeadersByPoints()
+        public SkaterLeadersRequest<SkaterLeaderByPoints> GetSkaterLeadersByPoints()
         {
-            return new SkaterLeadersByPointsRequest();
+            return new SkaterLeadersRequest<SkaterLeaderByPoints>();
+        }
+
+        public SkaterLeadersRequest<SkaterLeaderByGoals> GetSkaterLeadersByGoals()
+        {
+            return new SkaterLeadersRequest<SkaterLeaderByGoals>();
+        }
+
+        public SkaterLeadersRequest<SkaterLeaderByAssists> GetSkaterLeadersByAssists()
+        {
+            return new SkaterLeadersRequest<SkaterLeaderByAssists>();
         }
     }
 }

@@ -1,19 +1,20 @@
 ﻿using NHL.Data.Enums;
 using NHL.Data.Helpers;
-using NHL.Data.Models;
+using NHL.Data.Interfaces;
 using NHL_Core.Client.Constants;
 using System.Collections.Specialized;
 
 namespace NHL_Core.Client.Requests
 {
-    public class SkaterLeadersByPointsRequest : Request<SkaterLeaderByPoints>
+    public class SkaterLeadersRequest<TResult> : Request<TResult>
+         where TResult : class, ISkaterLeaderModel, new()
     {
         protected SeasonEnum SeasonId { get; private set; }
         protected GameTypeEnum GameType { get; private set; }
 
         #region ctors
 
-        internal SkaterLeadersByPointsRequest()
+        internal SkaterLeadersRequest()
         {
             SeasonId = SeasonHelper.GetCurrectSeason();
             GameType = GameTypeEnum.RegularSeason;
@@ -23,13 +24,13 @@ namespace NHL_Core.Client.Requests
 
         #region Public Methods
 
-        public SkaterLeadersByPointsRequest SetSeasonId(SeasonEnum seasonId)
+        public SkaterLeadersRequest<TResult> SetSeasonId(SeasonEnum seasonId)
         {
             SeasonId = seasonId;
             return this;
         }
 
-        public SkaterLeadersByPointsRequest SetGameType(GameTypeEnum gameType)
+        public SkaterLeadersRequest<TResult> SetGameType(GameTypeEnum gameType)
         {
             GameType = gameType;
             return this;

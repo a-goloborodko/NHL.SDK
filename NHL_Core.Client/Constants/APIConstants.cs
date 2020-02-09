@@ -17,7 +17,9 @@ namespace NHL_Core.Client.Constants
             { typeof(Country), new Uri(APIUrls.Countries) },
             { typeof(Franchise), new Uri(APIUrls.Franchises) },
             { typeof(Draft), new Uri(APIUrls.Drafts) },
-            { typeof(SkaterLeaderByPoints), new Uri(APIUrls.SkaterLeaderByPoints) },
+            { typeof(SkaterLeaderByPoints), new Uri(APIUrls.SkaterLeadersByPoints) },
+            { typeof(SkaterLeaderByGoals), new Uri(APIUrls.SkaterLeadersByGoals) },
+            { typeof(SkaterLeaderByAssists), new Uri(APIUrls.SkaterLeadersByAssist) },
         };
 
         internal static class APIUrls
@@ -32,7 +34,9 @@ namespace NHL_Core.Client.Constants
             public const string Countries = "https://api.nhle.com/stats/rest/en/country";
             public const string Franchises = "https://api.nhle.com/stats/rest/en/franchise";
             public const string Drafts = "https://api.nhle.com/stats/rest/en/draft";
-            public const string SkaterLeaderByPoints = "https://api.nhle.com/stats/rest/en/leaders/skaters/points";
+            public const string SkaterLeadersByPoints = "https://api.nhle.com/stats/rest/en/leaders/skaters/points";
+            public const string SkaterLeadersByGoals = "https://api.nhle.com/stats/rest/en/leaders/skaters/goals";
+            public const string SkaterLeadersByAssist = "https://api.nhle.com/stats/rest/en/leaders/skaters/assists";
         }
     }
 }
