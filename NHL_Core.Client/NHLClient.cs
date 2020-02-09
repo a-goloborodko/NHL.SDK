@@ -44,5 +44,15 @@ namespace NHL_Core.Client
         {
             return new Request<Country>();
         }
+
+        public FranchisesRequest GetFranchises()
+        {
+            return new FranchisesRequest();
+        }
+
+        public Request<Draft> GetDrafts()
+        {
+            return new Request<Draft>();
+        }
     }
 }
