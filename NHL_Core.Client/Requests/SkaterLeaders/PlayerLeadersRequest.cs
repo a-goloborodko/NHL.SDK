@@ -6,7 +6,7 @@ using System.Collections.Specialized;
 
 namespace NHL_Core.Client.Requests
 {
-    public class SkaterLeadersRequest<TResult> : Request<TResult>
+    public class PlayerLeadersRequest<TResult> : Request<TResult>
          where TResult : class, ISkaterLeaderModel, new()
     {
         protected SeasonEnum SeasonId { get; private set; }
@@ -14,7 +14,7 @@ namespace NHL_Core.Client.Requests
 
         #region ctors
 
-        internal SkaterLeadersRequest()
+        internal PlayerLeadersRequest()
         {
             SeasonId = SeasonHelper.GetCurrectSeason();
             GameType = GameTypeEnum.RegularSeason;
@@ -24,13 +24,13 @@ namespace NHL_Core.Client.Requests
 
         #region Public Methods
 
-        public SkaterLeadersRequest<TResult> SetSeasonId(SeasonEnum seasonId)
+        public PlayerLeadersRequest<TResult> SetSeasonId(SeasonEnum seasonId)
         {
             SeasonId = seasonId;
             return this;
         }
 
-        public SkaterLeadersRequest<TResult> SetGameType(GameTypeEnum gameType)
+        public PlayerLeadersRequest<TResult> SetGameType(GameTypeEnum gameType)
         {
             GameType = gameType;
             return this;
@@ -40,6 +40,7 @@ namespace NHL_Core.Client.Requests
 
         #region Overrides
 
+        //TODO: create class that will create "cayenneExp" url part like GetQueryStringParameters do in RequestBase class
         protected override NameValueCollection GetQueryStringParameters()
         {
             var baseQueryParameters = base.GetQueryStringParameters();

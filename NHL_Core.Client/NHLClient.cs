@@ -35,7 +35,7 @@ namespace NHL_Core.Client
             return new Request<Season>();
         }
 
-        public Request<CurrentSeason> GetCurrentSeasonSeason()
+        public Request<CurrentSeason> GetCurrentSeason()
         {
             return new Request<CurrentSeason>();
         }
@@ -55,19 +55,19 @@ namespace NHL_Core.Client
             return new Request<Draft>();
         }
 
-        public SkaterLeadersRequest<SkaterLeaderByPoints> GetSkaterLeadersByPoints()
+        public PlayerLeadersRequest<SkaterLeaderByPoints> GetSkaterLeadersByPoints()
         {
-            return new SkaterLeadersRequest<SkaterLeaderByPoints>();
+            return new PlayerLeadersRequest<SkaterLeaderByPoints>();
         }
 
-        public SkaterLeadersRequest<SkaterLeaderByGoals> GetSkaterLeadersByGoals()
+        public PlayerLeadersRequest<SkaterLeaderByGoals> GetSkaterLeadersByGoals()
         {
-            return new SkaterLeadersRequest<SkaterLeaderByGoals>();
+            return new PlayerLeadersRequest<SkaterLeaderByGoals>();
         }
 
-        public SkaterLeadersRequest<SkaterLeaderByAssists> GetSkaterLeadersByAssists()
+        public PlayerLeadersRequest<SkaterLeaderByAssists> GetSkaterLeadersByAssists()
         {
-            return new SkaterLeadersRequest<SkaterLeaderByAssists>();
+            return new PlayerLeadersRequest<SkaterLeaderByAssists>();
         }
     }
 }

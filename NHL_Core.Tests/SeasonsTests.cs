@@ -53,7 +53,7 @@ namespace NHL_Core.Tests
                 .OrderByDescending(x => x.Id)
                 .ExecuteAsync();
 
-            var currentSeasonResponse = await Client.GetCurrentSeasonSeason().ExecuteAsync();
+            var currentSeasonResponse = await Client.GetCurrentSeason().ExecuteAsync();
 
             Assert.True(seasons.Success);
             Assert.NotEmpty(seasons.Data);
@@ -69,7 +69,7 @@ namespace NHL_Core.Tests
         [Fact]
         public async Task GetCurrentSeason()
         {
-            var currentSeasonResponse = await Client.GetCurrentSeasonSeason().ExecuteAsync();
+            var currentSeasonResponse = await Client.GetCurrentSeason().ExecuteAsync();
 
             Assert.True(currentSeasonResponse.Success);
             Assert.Single(currentSeasonResponse.Data);
