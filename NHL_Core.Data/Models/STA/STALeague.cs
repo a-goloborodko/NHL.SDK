@@ -1,6 +1,6 @@
 ﻿namespace NHL.Data.Models
 {
-    public class League
+    public class STALeague
     {
         public string Name { get; set; }
         public string Link { get; set; }

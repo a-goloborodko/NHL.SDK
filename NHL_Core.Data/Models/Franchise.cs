@@ -1,19 +1,20 @@
-﻿using Newtonsoft.Json;
-using NHL.Data.Attributes;
-using NHL.Data.Enums;
+﻿using NHL.Data.Enums;
 using NHL.Data.Interfaces;
 
 namespace NHL.Data.Models
 {
-    [ObjectAnnotation("franchises")]
-    public class Franchise : IIdentityNHLModel
+    public class Franchise : INHLModel
     {
-        public SeasonEnum FirstSeasonId { get; set; }
-        [JsonProperty("FranchiseId")]
         public int Id { get; set; }
-        public string Link { get; set; }
-        public string LocationName { get; set; }
-        public int MostRecentTeamId { get; set; }
-        public string TeamName { get; set; }
+        public SeasonId FirstSeason { get; set; }
+        public string FullName { get; set; }
+        public SeasonId LastSeason { get; set; }
+        public string TeamCommonName { get; set; }
+        public string TeamPlaceName { get; set; }
+    }
+
+    public class SeasonId
+    {
+        public SeasonEnum Id { get; set; }
     }
 }

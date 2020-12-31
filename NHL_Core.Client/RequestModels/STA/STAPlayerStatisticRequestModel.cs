@@ -2,7 +2,7 @@
 
 namespace NHL_Core.Client.RequestModels
 {
-    public class PlayerStatisticRequestModel
+    public class STAPlayerStatisticRequestModel
     {
         [RequestQueryParameterName("yearByYear")]
         public object YearByYearStatistic { get; set; }

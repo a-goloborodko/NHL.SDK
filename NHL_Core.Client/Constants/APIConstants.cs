@@ -7,24 +7,36 @@ namespace NHL_Core.Client.Constants
     internal static class APIConstants
     {
         public static readonly Dictionary<Type, Uri> RequestUrls = new Dictionary<Type, Uri>() {
-            { typeof(Conference), new Uri(APIUrls.Conferences) },
-            { typeof(Division), new Uri(APIUrls.Divisions) },
-            { typeof(Franchise), new Uri(APIUrls.Franchises) },
-            { typeof(Team), new Uri(APIUrls.Teams) },
-            { typeof(Player), new Uri(APIUrls.People) },
+            { typeof(STAConference), new Uri(APIUrls.STAConferences) },
+            { typeof(STADivision), new Uri(APIUrls.STADivisions) },
+            { typeof(STAFranchise), new Uri(APIUrls.STAFranchises) },
+            { typeof(STAeam), new Uri(APIUrls.STATeams) },
+            { typeof(STAPlayer), new Uri(APIUrls.STAPeople) },
             { typeof(Season), new Uri(APIUrls.Seasons) },
             { typeof(CurrentSeason), new Uri(APIUrls.CurrentSeason) },
+            { typeof(Country), new Uri(APIUrls.Countries) },
+            { typeof(Franchise), new Uri(APIUrls.Franchises) },
+            { typeof(Draft), new Uri(APIUrls.Drafts) },
+            { typeof(SkaterLeaderByPoints), new Uri(APIUrls.SkaterLeadersByPoints) },
+            { typeof(SkaterLeaderByGoals), new Uri(APIUrls.SkaterLeadersByGoals) },
+            { typeof(SkaterLeaderByAssists), new Uri(APIUrls.SkaterLeadersByAssist) },
         };
 
         internal static class APIUrls
         {
-            public const string Conferences = "https://statsapi.web.nhl.com/api/v1/conferences/";
-            public const string Divisions = "https://statsapi.web.nhl.com/api/v1/divisions/";
-            public const string Franchises = "https://statsapi.web.nhl.com/api/v1/franchises/";
-            public const string People = "https://statsapi.web.nhl.com/api/v1/people/";
-            public const string Teams = "https://statsapi.web.nhl.com/api/v1/teams/";
+            public const string STAConferences = "https://statsapi.web.nhl.com/api/v1/conferences/";
+            public const string STADivisions = "https://statsapi.web.nhl.com/api/v1/divisions/";
+            public const string STAFranchises = "https://statsapi.web.nhl.com/api/v1/franchises/";
+            public const string STAPeople = "https://statsapi.web.nhl.com/api/v1/people/";
+            public const string STATeams = "https://statsapi.web.nhl.com/api/v1/teams/";
             public const string Seasons = "https://api.nhle.com/stats/rest/en/season/";
             public const string CurrentSeason = "https://api.nhle.com/stats/rest/en/componentSeason";
+            public const string Countries = "https://api.nhle.com/stats/rest/en/country";
+            public const string Franchises = "https://api.nhle.com/stats/rest/en/franchise";
+            public const string Drafts = "https://api.nhle.com/stats/rest/en/draft";
+            public const string SkaterLeadersByPoints = "https://api.nhle.com/stats/rest/en/leaders/skaters/points";
+            public const string SkaterLeadersByGoals = "https://api.nhle.com/stats/rest/en/leaders/skaters/goals";
+            public const string SkaterLeadersByAssist = "https://api.nhle.com/stats/rest/en/leaders/skaters/assists";
         }
     }
 }

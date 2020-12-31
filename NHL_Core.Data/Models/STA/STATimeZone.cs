@@ -1,6 +1,6 @@
 ﻿namespace NHL.Data.Models
 {
-    public class TimeZone
+    public class STATimeZone
     {
         public string Id { get; set; }
         public int Offset { get; set; }

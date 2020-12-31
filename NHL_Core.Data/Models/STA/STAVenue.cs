@@ -1,9 +1,9 @@
 ﻿namespace NHL.Data.Models
 {
-    public class Venue
+    public class STAVenue
     {
         public string City { get; set; }
         public string Link { get; set; }
-        public TimeZone TimeZone { get; set; }
+        public STATimeZone TimeZone { get; set; }
     }
 }

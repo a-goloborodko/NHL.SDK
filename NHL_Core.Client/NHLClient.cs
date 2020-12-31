@@ -5,29 +5,29 @@ namespace NHL_Core.Client
 {
     public class NHLClient
     {
-        public IdRequest<Conference> GetConferences()
+        public STAIdRequest<STAConference> GetSTAConferences()
         {
-            return new IdRequest<Conference>();
+            return new STAIdRequest<STAConference>();
         }
 
-        public IdRequest<Division> GetDivisions()
+        public STAIdRequest<STADivision> GetSTADivisions()
         {
-            return new IdRequest<Division>();
+            return new STAIdRequest<STADivision>();
         }
 
-        public IdRequest<Team> GetTeams()
+        public STAIdRequest<STAeam> GetSTATeams()
         {
-            return new IdRequest<Team>();
+            return new STAIdRequest<STAeam>();
         }
 
-        public IdRequest<Franchise> GetFranchises()
+        public STAIdRequest<STAFranchise> GetSTAFranchises()
         {
-            return new IdRequest<Franchise>();
+            return new STAIdRequest<STAFranchise>();
         }
 
-        public PlayersRequest GetPlayer()
+        public STAPlayersRequest GetSTAPlayer()
         {
-            return new PlayersRequest();
+            return new STAPlayersRequest();
         }
 
         public Request<Season> GetSeasons()
@@ -35,14 +35,39 @@ namespace NHL_Core.Client
             return new Request<Season>();
         }
 
-        public Request<CurrentSeason> GetCurrentSeasonSeason()
+        public Request<CurrentSeason> GetCurrentSeason()
         {
             return new Request<CurrentSeason>();
         }
 
-        //public LeadersRequest GetLeaders()
-        //{
-        //    return null;
-        //}
+        public Request<Country> GetCountries()
+        {
+            return new Request<Country>();
+        }
+
+        public FranchisesRequest GetFranchises()
+        {
+            return new FranchisesRequest();
+        }
+
+        public Request<Draft> GetDrafts()
+        {
+            return new Request<Draft>();
+        }
+
+        public PlayerLeadersRequest<SkaterLeaderByPoints> GetSkaterLeadersByPoints()
+        {
+            return new PlayerLeadersRequest<SkaterLeaderByPoints>();
+        }
+
+        public PlayerLeadersRequest<SkaterLeaderByGoals> GetSkaterLeadersByGoals()
+        {
+            return new PlayerLeadersRequest<SkaterLeaderByGoals>();
+        }
+
+        public PlayerLeadersRequest<SkaterLeaderByAssists> GetSkaterLeadersByAssists()
+        {
+            return new PlayerLeadersRequest<SkaterLeaderByAssists>();
+        }
     }
 }

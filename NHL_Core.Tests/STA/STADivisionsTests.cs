@@ -4,27 +4,27 @@ using Xunit;
 
 namespace NHL_Core.Tests
 {
-    public class DivisionsTests : BaseNHLTest
+    public class STADivisionsTests : BaseNHLTest
     {
         [Fact]
-        public async Task GetDivisions()
+        public async Task GetSTADivisions()
         {
-            var divisions = await Client.GetDivisions().ExecuteAsync();
+            var divisions = await Client.GetSTADivisions().ExecuteAsync();
 
-            Assert.True(divisions.IsSuccess);
+            Assert.True(divisions.Success);
             Assert.NotEmpty(divisions.Data);
             Assert.Equal(4, divisions.Data.Count);
         }
 
         [Fact]
-        public async Task GetDivisionById()
+        public async Task GetSTADivisionById()
         {
-            var divisionRequest = Client.GetDivisions();
+            var divisionRequest = Client.GetSTADivisions();
             divisionRequest.SetId(17);
 
             var divisions = await divisionRequest.ExecuteAsync();
 
-            Assert.True(divisions.IsSuccess);
+            Assert.True(divisions.Success);
             Assert.NotEmpty(divisions.Data);
 
             Assert.Single(divisions.Data);

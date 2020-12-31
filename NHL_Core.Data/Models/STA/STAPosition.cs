@@ -1,6 +1,6 @@
 ﻿namespace NHL.Data.Models
 {
-    public struct Position
+    public struct STAPosition
     {
         public string Abbreviation { get; set; }
         public string Code { get; set; }

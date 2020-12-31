@@ -1,27 +1,27 @@
 ﻿namespace NHL.Data.Models
 {
-    public class PlayerStatistic
+    public class STAPlayerStatistic
     {
-        public StatisticType Type { get; set; }
-        public Split[] Splits { get; set; }
+        public STAStatisticType Type { get; set; }
+        public STASplit[] Splits { get; set; }
     }
 
-    public class StatisticType
+    public class STAStatisticType
     {
         public string DisplayName { get; set; }
     }
 
-    public class Split
+    public class STASplit
     {
         //TODO: use Season enum. Add JsonConverter
         public string Season { get; set; }
-        public Stat Stat { get; set; }
-        public Team Team { get; set; }
-        public League League { get; set; }
+        public STAStat Stat { get; set; }
+        public STAeam Team { get; set; }
+        public STALeague League { get; set; }
         public int SequenceNumber { get; set; }
     }
 
-    public class Stat
+    public class STAStat
     {
         public string TimeOnIce { get; set; }
         public int Assists { get; set; }

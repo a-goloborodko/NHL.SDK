@@ -3,17 +3,17 @@ using NHL_Core.Client.RequestHandlers;
 
 namespace NHL_Core.Client.Requests
 {
-    public class IdRequest<TResult> : RequestBase<TResult>
+    public class STAIdRequest<TResult> : STARequestBase<TResult>
         where TResult : class, INHLModel, new()
     {
         protected int _Id { get; set; }
 
-        internal IdRequest()
-            : base(new RequestHandlerBase<TResult>())
+        internal STAIdRequest()
+            : base(new STARequestHandlerBase<TResult>())
         {
         }
 
-        public IdRequest<TResult> SetId(int id)
+        public STAIdRequest<TResult> SetId(int id)
         {
             _Id = id;
 

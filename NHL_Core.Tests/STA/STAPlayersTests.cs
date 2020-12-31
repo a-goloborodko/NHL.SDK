@@ -4,28 +4,28 @@ using Xunit;
 
 namespace NHL_Core.Tests
 {
-    public class PlayersTests : BaseNHLTest
+    public class STAPlayersTests : BaseNHLTest
     {
         const int playerId = 8471675;
 
         [Fact]
-        public async Task GetPlayers()
+        public async Task GetSTAPlayers()
         {
-            var playersRequest = Client.GetPlayer();
+            var playersRequest = Client.GetSTAPlayer();
             var players = await playersRequest.ExecuteAsync();
 
             Assert.Single(players.Errors);
-            Assert.False(players.IsSuccess);
+            Assert.False(players.Success);
         }
 
         [Fact]
-        public async Task GetPlayerById()
+        public async Task GetSTAPlayerById()
         {
-            var playersRequest = Client.GetPlayer();
+            var playersRequest = Client.GetSTAPlayer();
             playersRequest.SetId(playerId);
             var players = await playersRequest.ExecuteAsync();
 
-            Assert.True(players.IsSuccess);
+            Assert.True(players.Success);
             Assert.NotEmpty(players.Data);
 
             Assert.Single(players.Data);
@@ -39,15 +39,15 @@ namespace NHL_Core.Tests
         }
 
         [Fact]
-        public async Task GetPlayerByIdWithYearByYearStatistic()
+        public async Task GetSTAPlayerByIdWithYearByYearStatistic()
         {
-            var playersRequest = Client.GetPlayer();
+            var playersRequest = Client.GetSTAPlayer();
 
             var players = await playersRequest.Include(x => x.YearByYearStatistic)
                 .SetId(playerId)
                 .ExecuteAsync();
 
-            Assert.True(players.IsSuccess);
+            Assert.True(players.Success);
             Assert.NotEmpty(players.Data);
 
             Assert.Single(players.Data);
@@ -75,15 +75,15 @@ namespace NHL_Core.Tests
         }
 
         [Fact]
-        public async Task GetPlayerByIdWithCareerRegularSeasonStatistic()
+        public async Task GetSTAPlayerByIdWithCareerRegularSeasonStatistic()
         {
-            var playersRequest = Client.GetPlayer();
+            var playersRequest = Client.GetSTAPlayer();
 
             var players = await playersRequest.Include(x => x.CareerRegularSeasonStatistic)
                 .SetId(playerId)
                 .ExecuteAsync();
 
-            Assert.True(players.IsSuccess);
+            Assert.True(players.Success);
             Assert.NotEmpty(players.Data);
 
             Assert.Single(players.Data);
@@ -102,16 +102,16 @@ namespace NHL_Core.Tests
         }
 
         [Fact]
-        public async Task GetPlayerByIdWithAllStatistics()
+        public async Task GetSTAPlayerByIdWithAllStatistics()
         {
-            var playersRequest = Client.GetPlayer();
+            var playersRequest = Client.GetSTAPlayer();
 
             var players = await playersRequest.Include(x => x.CareerRegularSeasonStatistic)
                 .Include(x => x.YearByYearStatistic)
                 .SetId(playerId)
                 .ExecuteAsync();
 
-            Assert.True(players.IsSuccess);
+            Assert.True(players.Success);
             Assert.NotEmpty(players.Data);
 
             Assert.Single(players.Data);
